@@ -1,0 +1,9 @@
+{
+  "name": "Quizphera (Plataforma de Gamificaciones y Desafíos)",
+  "description": "Una plataforma avanzada de gamificaciones y desafíos educativos creada por el Mg. Lic. Prof. Leandro Guerschberg - UNPAZ.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": []
+}

@@ -1,0 +1,108 @@
+{
+  "entities": {
+    "Quiz": {
+      "title": "Quiz",
+      "description": "Un conjunto de preguntas guardado por un profesor.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "createdBy": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "questions": {
+          "type": "array",
+          "items": { "$ref": "Question" }
+        }
+      },
+      "required": ["name", "questions", "createdBy"]
+    },
+    "Question": {
+      "title": "Question",
+      "description": "Una pregunta individual en un quiz.",
+      "type": "object",
+      "properties": {
+        "text": { "type": "string" },
+        "type": { "enum": ["multiple", "boolean"] },
+        "options": { "type": "array", "items": { "type": "string" } },
+        "correctAnswer": { "type": "integer" },
+        "timeLimit": { "type": "integer" }
+      },
+      "required": ["text", "type", "correctAnswer", "timeLimit"]
+    },
+    "Room": {
+      "title": "Room",
+      "description": "Una sesión activa de juego.",
+      "type": "object",
+      "properties": {
+        "code": { "type": "string" },
+        "quizId": { "type": "string" },
+        "status": { "enum": ["lobby", "playing", "results", "finished"] },
+        "mode": { "enum": ["SOLO", "MULTI_INDIVIDUAL", "MULTI_TEAM"] },
+        "currentQuestionIndex": { "type": "integer" },
+        "questionStartTime": { "type": "string", "format": "date-time" },
+        "hostId": { "type": "string" }
+      },
+      "required": ["code", "quizId", "status", "mode", "hostId"]
+    },
+    "Player": {
+      "title": "Player",
+      "description": "Un participante en una sala.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "avatar": { "type": "string" },
+        "score": { "type": "integer" },
+        "teamId": { "type": "string" },
+        "isHost": { "type": "boolean" },
+        "joinedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "avatar", "score"]
+    },
+    "Team": {
+      "title": "Team",
+      "description": "Un equipo en modo multijugador por equipos.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "score": { "type": "integer" }
+      },
+      "required": ["name", "score"]
+    },
+    "Ranking": {
+      "title": "Ranking",
+      "description": "Puntuaciones históricas.",
+      "type": "object",
+      "properties": {
+        "playerName": { "type": "string" },
+        "score": { "type": "integer" },
+        "quizName": { "type": "string" },
+        "mode": { "type": "string" },
+        "teamName": { "type": "string" },
+        "date": { "type": "string", "format": "date-time" }
+      },
+      "required": ["playerName", "score", "quizName", "date"]
+    }
+  },
+  "firestore": {
+    "quizzes": {
+      "schema": "Quiz",
+      "description": "Colección de todos los quizzes creados."
+    },
+    "rooms": {
+      "schema": "Room",
+      "description": "Salas activas de juego."
+    },
+    "rooms/{roomId}/players": {
+      "schema": "Player",
+      "description": "Jugadores dentro de una sala específica."
+    },
+    "rooms/{roomId}/teams": {
+      "schema": "Team",
+      "description": "Equipos dentro de una sala específica."
+    },
+    "rankings": {
+      "schema": "Ranking",
+      "description": "Clasificación global e histórica."
+    }
+  }
+}
