@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
-import { Card, CardContent } from '../components/ui/card';
+import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/button';
 import { Badge } from '../components/ui/badge';
 import { Users, Play, LogOut, Trophy } from 'lucide-react';
