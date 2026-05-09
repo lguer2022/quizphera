@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Routes, Route, useNavigate, Link, useParams, useLocation } from 'react-router-dom';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/Card';
-import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
-import { Badge } from '../components/ui/Badge';
+import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
+import { Button } from '../components/ui/button';
+import { Input } from '../components/ui/input';
+import { Badge } from '../components/ui/badge';
 import { ALL_QUIZZES } from '../utils/quizzes';
 import { QuizEditor } from '../components/Admin/QuizEditor';
 import { LayoutDashboard, BookOpen, Trophy, Users, LogOut, Plus, Settings, Play } from 'lucide-react';
