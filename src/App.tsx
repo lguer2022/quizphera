@@ -14,7 +14,7 @@ import { Home } from './pages/Home';
 import { Lobby } from './pages/Lobby';
 import { Game } from './pages/Game';
 import { AdminPanel } from './pages/AdminPanel';
-import { Toaster } from './components/ui/sonner';
+import { Toaster } from './components/ui/Sonner';
 import { sounds } from './utils/sounds';
 import { auth, db } from './lib/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
